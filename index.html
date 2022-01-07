@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animated Login Form</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	<div class="container">
+		<div class="login-content" style='margin-left: 600px;'>
+			<form name="login" action="index.html"  method="POST" onsubmit="return validateForm()">
+				<div style='font-size:150px' >
+					<i class="fas fa-user-circle" style="color:#36cd9a" ></i>
+				</div>
+				<h2 class="title">Welcome</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5 for="username">Username</h5>
+           		   		<input type="text" id="username" class="input">
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i">
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5 for="username">Password</h5>
+           		    	<input type="password" id="password" class="input">
+            	   </div>
+            	</div>
+            	<a href="#">Forgot Password?</a>
+            	<input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+    <script>
+// Login System Logic
+function validateForm() {
+	if (document.forms["login"]["username"].value == "") {
+		alert("Username Tidak Boleh Kosong");
+		document.forms["frmlogin"]["username"].focus();
+
+	}
+	if (document.forms["login"]["password"].value == "") {
+		alert("Password Tidak Boleh Kosong");
+		document.forms["login"]["password"].focus();
+
+	}	else{
+						var done = 0;
+			      var username = document.getElementById("username").value;
+						var password = document.getElementById("password").value;
+			      if (username == "coba" && password == "test") {
+						alert("Login Succes")
+			         window.location.href = "home.html";
+						return false;
+			         } else if (done == 0) {
+			                 alert("Username/Password yang anda masukan salah!");
+			              }
+						}
+}
+
+const inputs = document.querySelectorAll(".input");
+
+
+function addcl(){
+	let parent = this.parentNode.parentNode;
+	parent.classList.add("focus");
+}
+
+function remcl(){
+	let parent = this.parentNode.parentNode;
+	if(this.value == ""){
+		parent.classList.remove("focus");
+	}
+}
+
+
+inputs.forEach(input => {
+	input.addEventListener("focus", addcl);
+	input.addEventListener("blur", remcl);
+});
+
+
+	</script>
+</body>
+</html>
